@@ -1,0 +1,12 @@
+#!/bin/bash
+
+POSITIVE=$(curl https://api.covidtracking.com/v1/us/current.json | jq '.[0].positive')
+DEATH=$(curl https://api.covidtracking.com/v1/us/current.json | jq '.[0].death')
+HOSPITAL=$(curl https://api.covidtracking.com/v1/us/current.json | jq '.[0].hospitalized')
+VENT=$(curl https://api.covidtracking.com/v1/us/current.json | jq '.[0].onVentilatorCurrently')
+TODAY=$(date)
+
+echo ""
+echo ""
+
+echo "$TODAY, there are $POSITIVE positive Covid cases, $HOSPITAL people hospitalized, $VENT people on a ventilator, and $DEATH people have died."
